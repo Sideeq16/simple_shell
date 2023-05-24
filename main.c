@@ -10,7 +10,6 @@
  * main - simple shell program
  * @argc: number of argument
  * @argv: arugment passed
- * @env: environment variable
  * Return: zero on successful
  */
 int main(int argc, char *argv[])
@@ -49,7 +48,7 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			waitpid(child_proc,&status,0);
+			waitpid(child_proc, &status, 0);
 		}
 
 	}
