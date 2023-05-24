@@ -5,32 +5,48 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/**
+ * m_token - tokenize
+ * @str: strings
+ * @delim: delimeter
+ * Return: tokenize strings
+ */
+char **m_token(char *str, const char *delim)
+{
+	int token_count = 0;
+	char **tokens = NULL;
+	char *token = strtok(str, delim);
 
-char **m_token(char *str, const char *delim) {
-    int token_count = 0;
-    char **tokens = NULL;
-    char *token = strtok(str, delim);
+	while (token != NULL)
+	{
+	token_count++;
+	tokens = realloc(tokens, (token_count + 1) * sizeof(char *));
+	tokens[token_count - 1] = token;
+	token = strtok(NULL, delim);
+	}
 
-    while (token != NULL) {
-        token_count++;
-        tokens = realloc(tokens, (token_count + 1) * sizeof(char *));
-        tokens[token_count - 1] = token;
-        token = strtok(NULL, delim);
-    }
-
-    tokens[token_count] = NULL;
-    return tokens;
+	tokens[token_count] = NULL;
+	return (tokens);
 }
 
- void input_get(void)
+/**
+ * input_get - get user input
+ */
+void input_get(void)
 {
-    char *prefix = "#cisfun$ ";
+	char *prefix = "#cisfun$ ";
 	if (isatty(STDIN_FILENO))
 	{
 		write(STDOUT_FILENO, prefix, sizeof(prefix) + 1);
 	}
 }
 
+/**
+ * command_mod - run command method
+ * @arg_v: argument values
+ * @usr_command: user command
+ * Return: zero or fail
+ */
 void command_mod(char *usr_command, char **arg_v)
 {
 	pid_t child_pid;
@@ -83,6 +99,10 @@ void command_mod(char *usr_command, char **arg_v)
 }
 
 
+/**
+ * simple_shell - simple shell program
+ * @av: argument param
+ */
 void simple_shell(char **av)
 {
 	char *inputs = NULL;
@@ -110,9 +130,10 @@ void simple_shell(char **av)
  * @av: argument vector
  * Return: 0 on success
  */
-int main(int ac, char **av) {
-  (void)ac; 
-simple_shell(av);
-	
+int main(int ac, char **av)
+{
+	(void)ac;
+	simple_shell(av);
+
 	return (0);
 }
