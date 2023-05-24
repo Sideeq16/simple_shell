@@ -1,4 +1,3 @@
-// Online C compiler to run C program online
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -38,7 +37,7 @@ void command_mod(char *usr_command, char **arg_v)
 	int status;
 	char *command_path;
 
-//	if (strlen(usr_command) == 0 || strspn(usr_command, " \t") == strlen(usr_command))
+/*	if (strlen(usr_command) == 0 || strspn(usr_command, " \t") == strlen(usr_command)) */
 	if (strlen(usr_command) == 0)
 	{
 		return;
@@ -112,7 +111,7 @@ void simple_shell(char **av)
  * Return: 0 on success
  */
 int main(int ac, char **av) {
-   
+  (void)ac; 
 simple_shell(av);
 	
 	return (0);
