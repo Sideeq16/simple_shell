@@ -62,10 +62,10 @@ void exe_cmd1(char *command, char **av)
 			exit(1);
 		}
 	}
-	for (i = 0; av[i] != NULL; i++)
-	{
-		free(av[i]);
-	}
+/*	for (i = 0; av[i] != NULL; i++) */
+/*	{ */
+/*		free(av[i]); */
+/*	} */
 	free(av);
 }
 /**
