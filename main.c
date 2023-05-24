@@ -19,7 +19,7 @@ void handle_interrupt(int signum)
 void exe_cmd1(char *command, char **av)
 {
 	char *command_path;
-	int status;
+	int status, i;
 	pid_t pid;
 
 	if (strlen(command) == 0 || strspn(command, " \t") == strlen(command))
@@ -32,7 +32,8 @@ void exe_cmd1(char *command, char **av)
 		perror("Tokenization error");
 		return;
 	}
-	command_path = find_command(av[0]);
+	/*command_path = find_command(av[0]);*/
+	command_path = av[0];
 	if (command_path == NULL)
 	{
 		perror(av[0]);
@@ -62,7 +63,10 @@ void exe_cmd1(char *command, char **av)
 			exit(1);
 		}
 	}
-	/* for (i = 0; av[i] != NULL; i++){	free(av[i]);} */
+	for (i = 0; av[i] != NULL; i++)
+	{
+		free(av[i]);
+	}
 	free(av);
 }
 /**
