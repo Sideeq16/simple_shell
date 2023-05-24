@@ -29,7 +29,10 @@ int main(int argc, char *argv[])
 		}
 
 		if (getline(&inputs, &n, stdin) == -1)
-			break;
+		{
+			free(inputs);
+			exit(0);
+		}
 
 		inputs[strlen(inputs) - 1] = '\0';
 		/*if (strcmp(inputs, "exit") == 0)break;*/
