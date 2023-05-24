@@ -34,7 +34,8 @@ int main(int argc, char *argv[])
 			exit(0);
 		}
 
-		inputs[strlen(inputs) - 1] = '\0';
+		/*inputs[strlen(inputs) - 1] = '\0';*/
+		inputs[strcspn(inputs, "\n")] = '\0';
 		run_cmd(inputs, argv);
 		free(inputs);
 
