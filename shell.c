@@ -35,8 +35,7 @@ if (is_interative)
 nread = getline(&line, &len, stdin);
 if (nread == -1)
 {
-write(STDOUT_FILENO, "\n", 1);
-exit(0);
+	break;
 }
 line[strcspn(line, "\n")] = '\0';
 argv[0] = line;
