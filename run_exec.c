@@ -5,19 +5,18 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/**
+ * run_cmd - run command
+ * @command: command argument
+ * @av: arrays of values
+ */
 void run_cmd(char *command, char **av)
 {
-int status, i;
+int status;
 pid_t pid;
 
 if (strlen(command) == 0 || strspn(command, " \t") == strlen(command))
 {
-return;
-}
-av = strtok(command, " ");
-if (av == NULL)
-{
-perror("Tokenization error");
 return;
 }
 
@@ -43,9 +42,5 @@ perror("waitpid");
 exit(1);
 }
 }
-for (i = 0; av[i] != NULL; i++)
-{
-free(av[i]);
-}
-free(av);
+
 }
