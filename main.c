@@ -16,7 +16,8 @@
 int main(int argc, char *argv[], char **env)
 {
 	size_t n = 0;
-	char *args[] = {NULL}, *inputs = NULL;
+	/* char *args[] = {NULL} */
+	char *inputs = NULL;
 	pid_t child_proc;
 	int status, is_interative = isatty(STDIN_FILENO);
 	(void)argc;
@@ -42,7 +43,7 @@ int main(int argc, char *argv[], char **env)
 		}
 		else if (child_proc == 0)
 		{
-			execve(inputs, args, env);
+			execve(inputs, argv, env);
 			perror(argv[0]);
 			free(inputs);
 			exit(1);
