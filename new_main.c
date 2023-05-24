@@ -5,6 +5,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#define PREFIX "#cisfun$ "
+
 /**
  * m_token - tokenize
  * @str: strings
@@ -34,10 +36,10 @@ char **m_token(char *str, const char *delim)
  */
 void input_get(void)
 {
-	char *prefix = "#cisfun$ ";
+	/*char *prefix = "#cisfun$ ";*/
 	if (isatty(STDIN_FILENO))
 	{
-		write(STDOUT_FILENO, prefix, sizeof(prefix) + 1);
+		write(STDOUT_FILENO, PREFIX, sizeof(PREFIX) - 1);
 	}
 }
 
@@ -53,8 +55,7 @@ void command_mod(char *usr_command, char **arg_v)
 	int status;
 	char *command_path;
 
-/*	if (strlen(usr_command) == 0 || strspn(usr_command, " \t") == strlen(usr_command)) */
-	if (strlen(usr_command) == 0)
+	if (strlen(usr_command) == 0 || strspn(usr_command, " \t") == strlen(usr_command))
 	{
 		return;
 	}
