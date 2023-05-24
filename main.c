@@ -79,7 +79,7 @@ void shell_loop(char **av)
 	char *command = NULL;
 	size_t command_length = 0;
 
-	signal(SIGINT, handle_interrupt);
+	/* signal(SIGINT, handle_interrupt); */
 
 	while (1)
 	{
