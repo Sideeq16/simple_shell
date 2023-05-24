@@ -13,7 +13,7 @@
  * @env: environment variable
  * Return: zero on successful
  */
-int main(int argc, char *argv[], char **env)
+int main(int argc, char *argv[])
 {
 	size_t n = 0;
 	char *inputs = NULL;
@@ -35,21 +35,21 @@ int main(int argc, char *argv[], char **env)
 		inputs[strlen(inputs) - 1] = '\0';
 		/*if (strcmp(inputs, "exit") == 0)break;*/
 		child_proc = fork();
-		if (child_proc == -1)
+		if (child_proc < 0)
 		{
 			perror(argv[0]);
 			exit(1);
 		}
 		else if (child_proc == 0)
 		{
-			execve(inputs, argv, env);
+			execve(inputs, argv, NULL);
 			perror(argv[0]);
 			free(inputs);
 			exit(1);
 		}
 		else
 		{
-			wait(&status);
+			waitpid(child_proc,&status,0);
 		}
 
 	}
