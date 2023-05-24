@@ -26,7 +26,7 @@ void exe_cmd1(char *command, char **av)
 	{
 		return;
 	}
-	av = _tokenize(command, " \t");
+	av = _tokenize(command, " ");
 	if (av == NULL)
 	{
 		perror("Tokenization error");
