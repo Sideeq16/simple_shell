@@ -16,7 +16,6 @@
 int main(int argc, char *argv[], char **env)
 {
 	size_t n = 0;
-	/* char *args[] = {NULL} */
 	char *inputs = NULL;
 	pid_t child_proc;
 	int status, is_interative = isatty(STDIN_FILENO);
@@ -26,7 +25,7 @@ int main(int argc, char *argv[], char **env)
 	{
 		if (is_interative)
 		{
-		write(STDOUT_FILENO, "$ ", 2);
+		write(STDOUT_FILENO, "#cisfun$ ", 9);
 		fflush(stdout);
 		}
 
