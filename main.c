@@ -25,7 +25,7 @@ int main(int argc, char *argv[], char **env)
 	{
 		if (is_interative)
 		{
-		printf("#cisfun$ ");
+		write(STDOUT_FILENO, "$ ", 2);
 		fflush(stdout);
 		}
 
