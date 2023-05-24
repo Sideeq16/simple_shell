@@ -23,7 +23,7 @@ int main(int argc, char *argv[], char **env)
 
 	while (1)
 	{
-		printf("($) ");
+		printf("#cisfun$ ");
 
 		if (getline(&inputs, &n, stdin) == -1)
 			break;
