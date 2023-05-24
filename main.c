@@ -19,7 +19,7 @@ void handle_interrupt(int signum)
 void exe_cmd1(char *command, char **av)
 {
 	char *command_path;
-	int status, i;
+	int status;
 	pid_t pid;
 
 	if (strlen(command) == 0 || strspn(command, " \t") == strlen(command))
