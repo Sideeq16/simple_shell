@@ -21,10 +21,11 @@ int main(int argc, char *argv[], char **env)
 	int status;
 	(void)argc;
 
-	printf("#cisfun$ ");
+	/* printf("#cisfun$ ");*/
 	while (1)
 	{
-		/*printf("#cisfun$ ");*/
+		printf("#cisfun$ ");
+		fflush(stdout);
 
 		if (getline(&inputs, &n, stdin) == -1)
 			break;
