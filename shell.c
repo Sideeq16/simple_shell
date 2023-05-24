@@ -44,6 +44,7 @@ if (fork() == 0)
 execve(line, argv, environ);
 write(STDERR_FILENO, av[0], strlen(av[0]));
 write(STDERR_FILENO, err_msg, strlen(err_msg));
+free(line);
 exit(1);
 }
 else
