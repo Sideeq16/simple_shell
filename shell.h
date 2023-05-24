@@ -48,5 +48,6 @@ void print_env(char **env);
 void cleaner(char **temp);
 void handle_exit(char *command, char **av);
 void process_command(char *command, char **av, char **env);
+char **m_token(char *str, char *delim);
 
 #endif

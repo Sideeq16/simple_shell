@@ -1,5 +1,29 @@
 #include "shell.h"
 
+
+/**
+ * m_token - tokenize
+ * @command: chacters pass
+ * @delim: seperator
+ * Return: array of tokens
+*/
+char **m_token(char *str, char *delim)
+{
+	int token_count = 0;
+	char **tokens = NULL;
+	char *token = strtok(str, delim);
+
+	while (token != NULL)
+	{
+		token_count++;
+		tokens = realloc(tokens, (token_count+1) * sizeof(char *));
+		tokens[token_count - 1] = token;
+		token = strtok(NULL, delim);
+	}
+	tokens[token_count]= NULL;
+	return tokens;
+}
+
 /**
  * _tokenize - tokenizes the input of the user
  * @command: character
