@@ -128,6 +128,7 @@ void command_mod(char *usr_command, char **arg_v)
 	if (_strcmp(arg_v[0], "exit") == 0)
 	{
 		free(arg_v);
+		free(usr_command);
 		exit(0);
 	}
 
