@@ -43,9 +43,9 @@ void inner_exec(char **arg_v)
 		if (waitpid(child_pid, &status, 0) == -1)
 		{
 
-			if(!isatty(fileno(stdin)))
+			if (!isatty(fileno(stdin)))
 			{
-				exit(0);				
+				exit(0);
 			}
 			perror("err waitpid");
 			free(command_path);
