@@ -65,7 +65,7 @@ void command_mod(char *usr_command, char **arg_v)
 	{
 		free(arg_v);
 		free(usr_command);
-		/* exit(0); */
+		exit(0);
 	}
 
 	if (_strcmp(arg_v[0], "env") == 0)
@@ -96,7 +96,7 @@ void simple_shell(char **av)
 		if (getline(&inputs, &inputs_len, stdin) == -1)
 		{
 			free(inputs);
-			exit(0);
+			exit(2);
 		}
 		inputs[strcspn(inputs, "\n")] = '\0';
 		command_mod(inputs, av);
