@@ -20,7 +20,7 @@ char **m_token(char *str, const char *delim)
 	token_count++;
 	tokens = realloc(tokens, (token_count + 1) * sizeof(char *));
 	tokens[token_count - 1] = token;
-	token = my_strtok(NULL, delim);
+	token = strtok(NULL, delim);
 	}
 
 	tokens[token_count] = NULL;

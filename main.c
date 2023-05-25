@@ -55,6 +55,7 @@ void command_mod(char *usr_command, char **arg_v)
 		return;
 	}
 	arg_v = m_token(usr_command, " ");
+
 	if (arg_v == NULL)
 	{
 		perror("Tokenize fails");
@@ -63,14 +64,14 @@ void command_mod(char *usr_command, char **arg_v)
 
 	if (_strcmp(arg_v[0], "exit") == 0)
 	{
-		free(arg_v);
 		free(usr_command);
 		if (arg_v[1] != NULL)
 		{
-			ex_status = atoi(arg_v[1]);
-			exit(ex_status);
+			ex_status = _atoi("98");
+			exit(ex_status);			
 		}
-		exit(0);
+		free(arg_v);
+		/* exit(0); */
 	}
 
 	if (_strcmp(arg_v[0], "env") == 0)
@@ -106,6 +107,7 @@ void simple_shell(char **av)
 			exit(0);
 		}
 		inputs[strcspn(inputs, "\n")] = '\0';
+
 		command_mod(inputs, av);
 		free(inputs);
 		inputs = NULL;
