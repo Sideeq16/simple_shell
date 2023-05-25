@@ -21,7 +21,6 @@ void inner_exec(char **arg_v)
 	if (command_path == NULL)
 	{
 		perror(arg_v[0]);
-		exit(0);
 		return;
 	}
 	child_pid = fork();
@@ -29,14 +28,14 @@ void inner_exec(char **arg_v)
 	{
 		perror("fail to fork");
 		free(command_path);
-		exit(2);
+		exit(1);
 	}
 	else if (child_pid == 0)
 	{
 		if (execve(command_path, arg_v, NULL) == -1)
 		{
 			perror(arg_v[0]);
-			exit(2);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
@@ -45,7 +44,7 @@ void inner_exec(char **arg_v)
 		{
 			perror("err waitpid");
 			free(command_path);
-			exit(2);
+			exit(1);
 		}
 	}
 	free(arg_v);
