@@ -65,7 +65,7 @@ void command_mod(char *usr_command, char **arg_v)
 	{
 		free(arg_v);
 		free(usr_command);
-		exit(2);
+		exit();
 	}
 
 	if (_strcmp(arg_v[0], "env") == 0)
