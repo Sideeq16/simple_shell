@@ -95,7 +95,7 @@ void simple_shell(char **av)
 	{
 		input_get();
 		fflush(stdout);
-		if (my_getline(&inputs, &inputs_len, stdin) == -1)
+		if (getline(&inputs, &inputs_len, stdin) == -1)
 		{
 			free(inputs);
 			exit(0);
