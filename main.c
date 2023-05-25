@@ -96,7 +96,7 @@ void simple_shell(char **av)
 		if (getline(&inputs, &inputs_len, stdin) == -1)
 		{
 			free(inputs);
-			exit(0);
+			exit(2);
 		}
 		inputs[strcspn(inputs, "\n")] = '\0';
 		command_mod(inputs, av);
