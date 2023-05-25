@@ -35,7 +35,7 @@ void inner_exec(char **arg_v)
 		if (execve(command_path, arg_v, NULL) == -1)
 		{
 			perror(arg_v[0]);
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
@@ -44,7 +44,7 @@ void inner_exec(char **arg_v)
 		{
 			perror("err waitpid");
 			free(command_path);
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 	}
 	free(arg_v);
