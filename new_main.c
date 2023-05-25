@@ -8,6 +8,49 @@
 #define PREFIX "#cisfun$ "
 
 /**
+* *_strcmp - compare two string
+* @s1: string 1
+* @s2: string 2
+* Return: postive or negative value
+*/
+int _strcmp(char *s1, char *s2)
+{
+	int i = 0, v1, v2;
+	int countS1 = 0, countS2 = 0, n = 0;
+
+	while (*(s1 + countS1) != '\0')
+	{
+		countS1++;
+	}
+	while (*(s2 + countS2) != '\0')
+	{
+		countS2++;
+	}
+
+	n = countS1 > countS2 ? countS1 : countS2;
+
+	while (i < n)
+	{
+		if (*(s1 + i) != *(s2 + i))
+		{
+			v1 = (int) *(s1 + i);
+			v2 = (int) *(s2 + i);
+			if (v1 > v2)
+			{
+				return (v1 - v2);
+			}
+			else if (v1 < v2)
+			{
+				return (v1 - v2);
+			}
+		}
+		i++;
+	}
+
+	return (0);
+}
+
+/**
  * m_token - tokenize
  * @str: strings
  * @delim: delimeter
@@ -44,6 +87,18 @@ void input_get(void)
 }
 
 /**
+ * print_env - get user input
+ */
+void print_env(void) {
+    extern char **environ;
+    for (int i = 0; environ[i] != NULL; i++) {
+        /*printf("%s\n", environ[i]);*/
+        write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+        write(STDOUT_FILENO, "\n", 1);
+    }
+}
+
+/**
  * command_mod - run command method
  * @arg_v: argument values
  * @usr_command: user command
@@ -66,11 +121,18 @@ void command_mod(char *usr_command, char **arg_v)
 		return;
 	}
 
-	if (strcmp(arg_v[0], "exit") == 0)
+	if (_strcmp(arg_v[0], "exit") == 0)
 	{
 		free(arg_v);
 		exit(0);
 	}
+	
+	if (_strcmp(arg_v[0], "env") == 0) {
+        print_env();
+        free(arg_v);
+        return;
+	}
+	
 	/*command_path = find_command(arg_v[0]);*/
 	command_path = arg_v[0];
 	if (command_path == NULL)
