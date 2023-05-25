@@ -65,6 +65,12 @@ void command_mod(char *usr_command, char **arg_v)
 		perror("Tokenize fails");
 		return;
 	}
+
+	if (strcmp(arg_v[0], "exit") == 0)
+	{
+		free(arg_v);
+		exit(0);
+	}
 	/*command_path = find_command(arg_v[0]);*/
 	command_path = arg_v[0];
 	if (command_path == NULL)
