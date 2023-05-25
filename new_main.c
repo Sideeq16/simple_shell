@@ -89,13 +89,17 @@ void input_get(void)
 /**
  * print_env - get user input
  */
-void print_env(void) {
-    extern char **environ;
-    for (int i = 0; environ[i] != NULL; i++) {
-        /*printf("%s\n", environ[i]);*/
-        write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-        write(STDOUT_FILENO, "\n", 1);
-    }
+void print_env(void)
+{
+	extern char **environ;
+	int i = 0;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+	/* printf("%s\n", environ[i]);*/
+	write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+	write(STDOUT_FILENO, "\n", 1);
+	}
 }
 
 /**
@@ -126,13 +130,14 @@ void command_mod(char *usr_command, char **arg_v)
 		free(arg_v);
 		exit(0);
 	}
-	
-	if (_strcmp(arg_v[0], "env") == 0) {
-        print_env();
-        free(arg_v);
-        return;
+
+	if (_strcmp(arg_v[0], "env") == 0)
+	{
+	print_env();
+	free(arg_v);
+	return;
 	}
-	
+
 	/*command_path = find_command(arg_v[0]);*/
 	command_path = arg_v[0];
 	if (command_path == NULL)
