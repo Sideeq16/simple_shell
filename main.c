@@ -89,13 +89,15 @@ void simple_shell(char **av)
 {
 	char *inputs = NULL;
 	size_t inputs_len = 0;
+	/*ssize_t input_len;*/
 
 	while (1)
 	{
 		input_get();
 		fflush(stdout);
-		if (my_getline(&inputs, &inputs_len, stdin) == -1)
+		if (my_getline(&inputs, &inputs_len, stdin) <= 0)
 		{
+			break;
 			free(inputs);
 			exit(0);
 		}
