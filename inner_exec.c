@@ -21,6 +21,7 @@ void inner_exec(char **arg_v)
 	if (command_path == NULL)
 	{
 		perror(arg_v[0]);
+		exit(0);
 		return;
 	}
 	child_pid = fork();
@@ -35,7 +36,7 @@ void inner_exec(char **arg_v)
 		if (execve(command_path, arg_v, NULL) == -1)
 		{
 			perror(arg_v[0]);
-			exit(0);
+			exit(1);
 		}
 	}
 	else
