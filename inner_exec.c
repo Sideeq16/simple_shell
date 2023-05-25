@@ -35,7 +35,7 @@ void inner_exec(char **arg_v)
 		if (execve(command_path, arg_v, NULL) == -1)
 		{
 			perror(arg_v[0]);
-			exit(EXIT_FAILURE);
+			exit(1);
 		}
 	}
 	else
