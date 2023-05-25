@@ -46,6 +46,11 @@ void inner_exec(char **arg_v)
 			free(command_path);
 			exit(EXIT_FAILURE);
 		}
+	
+		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		{
+			exit(EXIT_FAILURE);
+		}
 	}
 	free(arg_v);
 }
