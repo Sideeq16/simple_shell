@@ -46,7 +46,7 @@ void print_env(void)
 void command_mod(char *usr_command, char **arg_v)
 {
 	/* pid_t child_pid; */
-	/* int status; */
+	int ex_status;
 	/* char *command_path; */
 
 	if (strlen(usr_command) == 0 || strspn(usr_command, " \t")
@@ -65,6 +65,11 @@ void command_mod(char *usr_command, char **arg_v)
 	{
 		free(arg_v);
 		free(usr_command);
+		if (arg_v[1] != NULL)
+		{
+			ex_status = atoi(arg_v[1]);
+			exit(ex_status);
+		}
 		exit(0);
 	}
 
