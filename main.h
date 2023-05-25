@@ -6,5 +6,7 @@ extern char **environ;
 char **m_token(char *str, const char *delim);
 int _strcmp(char *s1, char *s2);
 void inner_exec(char **argv);
+char *find_command(char *command);
+char *build_path(char *dir, char *command);
 
 #endif

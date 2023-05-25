@@ -1,4 +1,11 @@
-#include "shell.h"
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include "main.h"
 
 /**
  * build_path - builds the full path of the command

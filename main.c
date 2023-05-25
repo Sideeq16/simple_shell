@@ -47,7 +47,7 @@ void command_mod(char *usr_command, char **arg_v)
 {
 	/* pid_t child_pid; */
 	/* int status; */
-	/* char *command_path; */
+	char *command_path;
 
 	if (strlen(usr_command) == 0 || strspn(usr_command, " \t")
 	== strlen(usr_command))
@@ -75,7 +75,15 @@ void command_mod(char *usr_command, char **arg_v)
 	return;
 	}
 
-	/*command_path = find_command(arg_v[0]);*/
+	command_path = find_command(arg_v[0]);
+	if (command_path == NULL)
+	{
+		perror(arg_v[0]);
+		free(arg_v);
+		return ;
+	}
+	
+
 	inner_exec(arg_v);
 }
 
