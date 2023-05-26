@@ -84,8 +84,6 @@ void command_mod(char *usr_command, char **arg_v)
 	return;
 	}
 
-	/*command_path = find_command(arg_v[0]);*/
-
 	inner_exec(arg_v);
 }
 
