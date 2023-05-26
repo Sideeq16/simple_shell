@@ -67,7 +67,9 @@ void command_mod(char *usr_command, char **arg_v)
 		/*free(usr_command);*/
 		if (arg_v[1] != NULL)
 		{
-			ex_status = _atoi(arg_v[1]); 
+			ex_status = _atoi(arg_v[1]);
+			free(usr_command);
+			free(arg_v);
 			exit(ex_status);
 		}
 		free(usr_command);
